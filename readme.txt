@@ -1,3 +1,6 @@
+I added this to the wordpress.org plugins at http://wordpress.org/plugins/amazon-affiliate-change-to-smile-link/
+
+
 === WP Change Affiliate Links to Smile ===
 Contributors: Thomas Loughlin
 Tags: amazon affiliate smile
