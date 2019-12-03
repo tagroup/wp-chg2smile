@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Change Amazon Short Links to Smile Links
-Plugin URI: http://thomasloughlin.com/amazon-smile-amazons-affiliate-program/
-Version: 1.0.0
+Plugin URI: https://thomasloughlin.com/amazon-smile-amazons-affiliate-program/
+Version: 1.0.2
 Author: Thomas Loughlin
-Author URI: http://thomasloughlin.com/
+Author URI: https://thomasloughlin.com/
 Description: Version 1 finds all shortened Amazon Affiliate Links and remaps them to smile.amazon.com.
 */
 
@@ -18,8 +18,10 @@ function smile_maker ($content)
     if ( false === ( $cache_temp = get_transient( 'wp_chg2smile_results' ) ) ) {
         $cache_temp=array();
     }
-
-    $pattern = '/(http:\/\/amzn\.to\/[a-zA-Z0-9]*["|\'])/i' ;
+/*
+ * Match http:// or https:// that is enclosed with ' or "
+ */
+    $pattern = '/(https?:\/\/amzn\.to\/[a-zA-Z0-9]*["|\'])/i' ;
     $found=preg_match_all($pattern, $content, $matches, PREG_PATTERN_ORDER);
 
     $find=array();
@@ -85,7 +87,7 @@ function smile_maker ($content)
 
     }
 /*
- *  Daring or Dangerous people can replace  "return $content;" 
+ *  Daring or Dangerous people can replace  "return $content;"
  * with "return str_replace($normal_url,$smile_url,$content);"
  */
  return $content;
